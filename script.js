@@ -48,8 +48,8 @@ const updateValues = (data) => {
         console.log(i)
         console.log(forecastTiles[i].children[0])
         forecastTiles[i].children[0].src = `icons/${data.list[i * 8].weather[0].icon}.svg`;
-        forecastTiles[i].children[1].innerHTML = weekday[D.getDay() + i];
-        forecastTiles[i].children[2].innerHTML = Math.round(data.list[i].main.temp) + "&#8451;";
+        forecastTiles[i].children[1].innerHTML = weekday[(D.getDay() + i)%7];
+        forecastTiles[i].children[2].innerHTML = Math.round(data.list[i*8].main.temp) + "&#8451;";
     }
 }
 
