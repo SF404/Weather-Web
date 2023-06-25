@@ -62,3 +62,17 @@ window.onload = () => {
     getForecast('Srinagar');
     $("form").addEventListener('submit', changeLocation);
 }
+
+
+function scrollForecast(right){
+    const scrollContainer=$('forecastContainer');
+    if(right){
+        
+        scrollContainer.scrollTo(scrollContainer.scrollLeft+50, 0)
+        scrollContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+    else{
+        // if(scrollContainer.scrollLeft=0) return;
+        scrollContainer.scrollTo(scrollContainer.scrollLeft-50, 0)
+    }
+}
