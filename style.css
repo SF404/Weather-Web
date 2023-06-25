@@ -92,6 +92,11 @@ form>button {
     grid-column: span 3;
 }
 
+.forecastTileName{
+    display: flex;
+    justify-content: space-between;
+}
+
 .currentWeather {
     height: 300px;
     grid-column: span 2;
