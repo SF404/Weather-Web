@@ -9,8 +9,7 @@ async function getForecast(city) {
     if (data.cod == 200) updateValues(data);
     else if (data.cod == 404) alert("City Not Found");
     else alert("Error fetching data from API")
-
-    console.log(data)
+    console.log(data);
 }
 
 function $(id) {
@@ -19,11 +18,10 @@ function $(id) {
 
 function getTime(time) {
     let T = new Date(time * 1000);
-
     if (T.getHours() > 12) {
-        return (T.getHours() - 12) + ":" + T.getMinutes() + " PM";
+        return (T.getHours() - 12).toString().padStart(2, "0") + ":" + T.getMinutes().toString().padStart(2, "0") + " PM";
     }
-    return T.getHours() + " : " + T.getMinutes() + " AM";
+    return T.getHours().toString().padStart(2, "0") + " : " + T.getMinutes().toString().padStart(2, "0") + " AM";
 }
 
 const updateValues = (data) => {
@@ -31,7 +29,12 @@ const updateValues = (data) => {
     $('location').innerText = data.city.name;
     $("weatherIcon").src = `icons/${data.list[0].weather[0].icon}.svg`;
     $('temperature').innerText = Math.round(data.list[0].main.temp);
-    $('dateTime').innerHTML = "Time: " + D.getHours() + " : " + D.getMinutes() + "<br>" + "Date: " + D.getDate() + " / " + (D.getMonth() + 1)
+    $('dateTime').innerText =
+        "Time: " + D.getHours().toString().padStart(2, "0") +
+        " : " + D.getMinutes().toString().padStart(2, "0") +
+        " - " +
+        "Date: " + D.getDate().toString().padStart(2, "0") +
+        " / " + (D.getMonth() + 1).toString().padStart(2, "0");
     $("currentWeather").style.background = `url('images/${data.list[0].weather[0].icon}.jpg') no-repeat center center/cover`;
     $('sunrise').innerText = getTime(data.city.sunrise);
     $('sunset').innerText = getTime(data.city.sunset);
@@ -45,12 +48,11 @@ const updateValues = (data) => {
 
     const forecastTiles = $('forecastContainer').children;
     for (let i = 0; i < 5; i++) {
-        console.log(i)
-        console.log(forecastTiles[i].children[0])
         forecastTiles[i].children[0].src = `icons/${data.list[i * 8].weather[0].icon}.svg`;
-        forecastTiles[i].children[1].innerHTML = weekday[(D.getDay() + i)%7];
-        forecastTiles[i].children[2].innerHTML = Math.round(data.list[i*8].main.temp) + "&#8451;";
+        forecastTiles[i].children[1].innerHTML = weekday[(D.getDay() + i) % 7];
+        forecastTiles[i].children[2].innerHTML = Math.round(data.list[i * 8].main.temp) + "&#8451;";
     }
+
 }
 
 function changeLocation(event) {
@@ -64,15 +66,15 @@ window.onload = () => {
 }
 
 
-function scrollForecast(right){
-    const scrollContainer=$('forecastContainer');
-    if(right){
-        
-        scrollContainer.scrollTo(scrollContainer.scrollLeft+50, 0)
+function scrollForecast(right) {
+    const scrollContainer = $('forecastContainer');
+    if (right) {
+
+        scrollContainer.scrollTo(scrollContainer.scrollLeft + 50, 0)
         scrollContainer.scrollIntoView({ behavior: 'smooth' });
     }
-    else{
+    else {
         // if(scrollContainer.scrollLeft=0) return;
-        scrollContainer.scrollTo(scrollContainer.scrollLeft-50, 0)
+        scrollContainer.scrollTo(scrollContainer.scrollLeft - 50, 0)
     }
 }

@@ -102,6 +102,7 @@ form>button {
     grid-column: span 2;
     padding: 1em 1.4em;
     background: url(images/01d.jpg) no-repeat center center/cover;
+    position: relative;
 }
 
 #location {
@@ -109,6 +110,9 @@ form>button {
 }
 
 #dateTime {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
     margin: 0.4em;
     float: right;
     font-size: smaller;
@@ -238,6 +242,9 @@ form>button {
         padding: 1rem;
     }
 }
-#create,#names{
-    color:rgba(255, 255, 255, 0.7);
+
+.footer{
+    padding: 0.5rem;
+    text-align: center;
+    margin-top: 1rem;
 }
