@@ -248,3 +248,9 @@ form>button {
     text-align: center;
     margin-top: 1rem;
 }
+
+.footer>p>a{
+    color: rgba(255, 0, 0);
+    padding: 0.5rem;
+    font-size: small;
+}
