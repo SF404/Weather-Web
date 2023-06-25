@@ -238,3 +238,6 @@ form>button {
         padding: 1rem;
     }
 }
+#create,#names{
+    color:rgba(255, 255, 255, 0.7);
+}
