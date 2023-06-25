@@ -247,6 +247,7 @@ form>button {
     padding: 0.5rem;
     text-align: center;
     margin-top: 1rem;
+    overflow-wrap: break-word;
 }
 
 .footer>p>a{
