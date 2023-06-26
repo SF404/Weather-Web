@@ -29,6 +29,9 @@ const updateValues = (data) => {
     $('location').innerText = data.city.name;
     $("weatherIcon").src = `icons/${data.list[0].weather[0].icon}.svg`;
     $('temperature').innerText = Math.round(data.list[0].main.temp);
+
+    $("weatherDescription").innerText=(data.list[0].weather[0].description).toString();
+
     $('dateTime').innerText =
         "Time: " + D.getHours().toString().padStart(2, "0") +
         " : " + D.getMinutes().toString().padStart(2, "0") +
